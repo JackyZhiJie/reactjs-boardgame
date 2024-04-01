@@ -1,6 +1,8 @@
 import React from "react";
 import FaceIcon from "@mui/icons-material/Face";
 import Face2Icon from "@mui/icons-material/Face2";
+import Container from "@mui/material/Container";
+import { Grid } from "@mui/material";
 
 interface Player {
   currentPosition: number;
@@ -29,24 +31,26 @@ export const EachBox: React.FC<Props> = (props) => {
   };
 
   return (
-    <div className="each-box">
-      <div className="icons-in-box">
-        {getPlayerNamesArr().map((playerName) => {
-          const player = updatedState[playerName];
-          if (typeof player !== "number" && player.currentPosition === boxIndex) {
-            // return <div className={`${playerName}_shape`} />;
+    <Grid alignItems="center">
+      <div className="each-box">
+        <div className="icons-in-box">
+          {getPlayerNamesArr().map((playerName) => {
+            const player = updatedState[playerName];
             if (typeof player !== "number" && player.currentPosition === boxIndex) {
-              if (playerName === "P1") {
-                return <FaceIcon />;
-              } else if (playerName === "P2") {
-                return <Face2Icon />;
+              // return <div className={`${playerName}_shape`} />;
+              if (typeof player !== "number" && player.currentPosition === boxIndex) {
+                if (playerName === "P1") {
+                  return <FaceIcon />;
+                } else if (playerName === "P2") {
+                  return <Face2Icon />;
+                }
               }
             }
-          }
-          return null;
-        })}
+            return null;
+          })}
+        </div>
+        <div style={{ fontSize: "10px" }}>{boxIndex}</div>
       </div>
-      <div style={{ fontSize: "10px" }}>{boxIndex}</div>
-    </div>
+    </Grid>
   );
 };

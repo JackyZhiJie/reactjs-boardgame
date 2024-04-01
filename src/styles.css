@@ -1,16 +1,16 @@
 .App {
   font-family: sans-serif;
   text-align: center;
-  display: flex;
+  /* display: flex; */
 }
 .author {
   background: cadetblue;
 }
-.ledger-player {
+/* .ledger-player {
   display: flex;
   margin-left: 40px;
   margin-bottom: 10px;
-}
+} */
 li {
   text-align: start;
 }
@@ -27,11 +27,11 @@ li {
   display: flex;
   flex-direction: row-reverse;
 }
-.icons-in-box {
+/* .icons-in-box {
   display: flex;
   flex-wrap: wrap;
   width: 48px;
-}
+} */
 .P1_shape {
   height: 20px;
   width: 20px;
@@ -51,7 +51,7 @@ li {
 }
 .board {
   display: flex;
-  border: solid 3px #333;
+  border: solid 10px #333;
   flex-flow: column;
   transform: scale(1, -1);
   /* animation-name: flipBoard;

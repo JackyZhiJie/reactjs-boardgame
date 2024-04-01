@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
 
 interface SetPlayersProps {
   updateNumberOfPlayers: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -29,17 +31,24 @@ export const SetPlayers: React.FC<SetPlayersProps> = (props) => {
   };
 
   return (
-    <div>
-      <p>Start game by entering the names of Player 1 and Player 2</p>
-      <div>
-        <input type="text" placeholder="Player 1 Name" value={player1Name} onChange={handlePlayer1NameChange} />
-        <br />
-        <input type="text" placeholder="Player 2 Name" value={player2Name} onChange={handlePlayer2NameChange} />
-        <br />
-        <Button variant="contained" className="m-l-20" disabled={!player1Name || !player2Name} onClick={handleClick}>
+    <Grid container direction="column" spacing={2} alignContent={"center"}>
+      <Grid item xs={12} md={12}>
+        <h1>Pretty Chinese</h1>
+        <p>Start game by entering the names of Player 1 and Player 2</p>
+      </Grid>
+      <Grid container item spacing={2}>
+        <Grid item xs={12} sm={6} md={6}>
+          <TextField fullWidth variant="outlined" placeholder="Player 1 Name" value={player1Name} onChange={handlePlayer1NameChange} />
+        </Grid>
+        <Grid item xs={12} sm={6} md={6}>
+          <TextField fullWidth variant="outlined" placeholder="Player 2 Name" value={player2Name} onChange={handlePlayer2NameChange} />
+        </Grid>
+      </Grid>
+      <Grid item xs={12}>
+        <Button variant="contained" fullWidth disabled={!player1Name || !player2Name} onClick={handleClick}>
           START
         </Button>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };

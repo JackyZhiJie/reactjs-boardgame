@@ -4,6 +4,8 @@ import { SetPlayers } from "./SetPlayers.tsx";
 import { Layout } from "./Layout";
 import { Ledger } from "./Ledger.tsx";
 import Dice from "./Dice.tsx";
+import Grid from "@mui/material/Grid";
+import { Container } from "@mui/material";
 
 class App extends React.Component {
   //constructor means initializing the state
@@ -152,25 +154,35 @@ class App extends React.Component {
 
   render() {
     const { numOfPlayers, showLayout, hidePlayerSelection, chanceToRollDice } = this.state;
-
     return (
-      <div className="App">
-        <div className="left-container">
-          <h1>Board Game</h1>
-          {!hidePlayerSelection && <SetPlayers setPlayer1Name={this.setPlayer1Name} setPlayer2Name={this.setPlayer2Name} numOfPlayers={numOfPlayers} updateNumberOfPlayers={this.updateNumberOfPlayers} showLayout={this.initializeGame} />}
-          {showLayout && (
-            <>
-              <p>
-                Players are {this.state.player1Name} & {this.state.player2Name}
-              </p>
-              <p>Chance to Roll Dice is with {chanceToRollDice}</p>
-              <Dice rollDice={this.rollDice} />
-            </>
-          )}
-          <Ledger player1Name={this.state.player1Name} player2Name={this.state.player2Name} />
+      <Grid container direction="column">
+        <div className="App">
+          <div>
+            {/* <Grid xs={12} md={12}>
+                <h1>Board Game</h1>
+              </Grid> */}
+
+            <Container justifyContent="center" alignItems="center">
+              <>{!hidePlayerSelection && <SetPlayers setPlayer1Name={this.setPlayer1Name} setPlayer2Name={this.setPlayer2Name} numOfPlayers={numOfPlayers} updateNumberOfPlayers={this.updateNumberOfPlayers} showLayout={this.initializeGame} />}</>{" "}
+            </Container>
+
+            {showLayout && (
+              <Grid container spacing={2} justifyContent="center" alignItems="center">
+                <Grid md={4} justifyContent="center">
+                  <p>
+                    Players are {this.state.player1Name} & {this.state.player2Name}
+                  </p>
+                  <p>Chance to Roll Dice is with {chanceToRollDice}</p>
+                  <Dice rollDice={this.rollDice} />
+                  <Ledger player1Name={this.state.player1Name} player2Name={this.state.player2Name} />
+                </Grid>
+
+                <Grid md={8}>{showLayout && <Layout updatedState={this.state} />}</Grid>
+              </Grid>
+            )}
+          </div>
         </div>
-        <div className="right-container">{showLayout && <Layout updatedState={this.state} />}</div>
-      </div>
+      </Grid>
     );
   }
 }
