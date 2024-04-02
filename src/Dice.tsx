@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDice from "react-dice-complete";
 import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
 
 interface DiceProps {
   rollDice: (num: number) => void;
 }
+// The Dice component is a class component that uses the react-dice-complete library to create a dice rolling game. The component has a rollAll method that calls the rollAll method of the reactDiceRef object. The rollDoneCallback method is called when the dice is rolled and calls the rollDice method passed as a prop. The render method returns a ReactDice component and a Button component that calls the rollAll method when clicked.
 
 class Dice extends React.Component<DiceProps> {
   reactDiceRef: React.RefObject<any>;

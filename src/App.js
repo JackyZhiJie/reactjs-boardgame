@@ -6,6 +6,7 @@ import { Ledger } from "./Ledger.tsx";
 import Dice from "./Dice.tsx";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";
+import HandWriting from "./HandWriting";
 
 class App extends React.Component {
   //constructor means initializing the state
@@ -168,16 +169,26 @@ class App extends React.Component {
 
             {showLayout && (
               <Grid container spacing={2} justifyContent="center" alignItems="center">
-                <Grid md={4} justifyContent="center">
+                <Grid item md={4} justifyContent="center">
                   <p>
                     Players are {this.state.player1Name} & {this.state.player2Name}
                   </p>
                   <p>Chance to Roll Dice is with {chanceToRollDice}</p>
-                  <Dice rollDice={this.rollDice} />
+                  <Grid container>
+                    <Grid item md={6}>
+                      <Dice rollDice={this.rollDice} />
+                    </Grid>
+                    <Grid item md={6}>
+                      <HandWriting />
+                    </Grid>
+                  </Grid>
+
                   <Ledger player1Name={this.state.player1Name} player2Name={this.state.player2Name} />
                 </Grid>
 
-                <Grid md={8}>{showLayout && <Layout updatedState={this.state} />}</Grid>
+                <Grid item md={8}>
+                  {showLayout && <Layout updatedState={this.state} />}
+                </Grid>
               </Grid>
             )}
           </div>

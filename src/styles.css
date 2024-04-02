@@ -51,7 +51,8 @@ li {
 }
 .board {
   display: flex;
-  border: solid 10px #333;
+  margin-top: 30px;
+  /* border: solid 10px #333; */
   flex-flow: column;
   transform: scale(1, -1);
   /* animation-name: flipBoard;
