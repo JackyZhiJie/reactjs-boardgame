@@ -31,7 +31,7 @@ export const EachBox: React.FC<Props> = (props) => {
   };
 
   return (
-    <Grid alignItems="center">
+    <>
       <div className="each-box">
         <div className="icons-in-box">
           {getPlayerNamesArr().map((playerName) => {
@@ -51,6 +51,6 @@ export const EachBox: React.FC<Props> = (props) => {
         </div>
         <div style={{ fontSize: "10px" }}>{boxIndex}</div>
       </div>
-    </Grid>
+    </>
   );
 };

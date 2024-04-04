@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./styles.css";
-import { SetPlayers } from "./SetPlayers.tsx";
+import { SetPlayers } from "./SetPlayers";
 import { Layout } from "./Layout";
-import { Ledger } from "./Ledger.tsx";
-import Dice from "./Dice.tsx";
+import { Ledger } from "./Ledger";
+import Dice from "./Dice";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";
-import HandWriting from "./HandWriting";
+import HanziDrawingBoard from "./HanziDrawingBoard";
+import { Button } from "bootstrap";
 
 class App extends React.Component {
   //constructor means initializing the state
@@ -114,6 +115,7 @@ class App extends React.Component {
   //     }
   //   });
   // };
+
   updatePlayerPosition = () => {
     const currentChance = this.state.chanceToRollDice;
     const currentPlayerPostion = this.state[currentChance].currentPosition;
@@ -163,30 +165,42 @@ class App extends React.Component {
                 <h1>Board Game</h1>
               </Grid> */}
 
-            <Container justifyContent="center" alignItems="center">
+            <Container justifycontent="center" alignitems="center">
               <>{!hidePlayerSelection && <SetPlayers setPlayer1Name={this.setPlayer1Name} setPlayer2Name={this.setPlayer2Name} numOfPlayers={numOfPlayers} updateNumberOfPlayers={this.updateNumberOfPlayers} showLayout={this.initializeGame} />}</>{" "}
             </Container>
 
             {showLayout && (
-              <Grid container spacing={2} justifyContent="center" alignItems="center">
-                <Grid item md={4} justifyContent="center">
+              <Grid container spacing={2} justifycontent="center" alignitems="center">
+                <Grid item md={6}>
                   <p>
                     Players are {this.state.player1Name} & {this.state.player2Name}
                   </p>
                   <p>Chance to Roll Dice is with {chanceToRollDice}</p>
-                  <Grid container>
-                    <Grid item md={6}>
-                      <Dice rollDice={this.rollDice} />
-                    </Grid>
-                    <Grid item md={6}>
-                      <HandWriting />
-                    </Grid>
-                  </Grid>
+                  <>
+                    {/* <Grid item md={6}> */}
+                    <Dice rollDice={this.rollDice} />
+                    {/* </Grid> */}
+                    {/* <Grid item md={6}>
+                      <Grid container spacing={2} direction={"column"}>
+                        <Grid item md={12}>
+                          TODO
+                        </Grid>
+                        <Grid item md={12}>
+                          <HanziDrawingBoard
+                            g={() => {
+                              // TODO
+                            }}
+                          />
+                        </Grid>
+                        <Grid item md={12}></Grid>
+                      </Grid>
+                    </Grid> */}
+                  </>
 
                   <Ledger player1Name={this.state.player1Name} player2Name={this.state.player2Name} />
                 </Grid>
 
-                <Grid item md={8}>
+                <Grid item md={6}>
                   {showLayout && <Layout updatedState={this.state} />}
                 </Grid>
               </Grid>

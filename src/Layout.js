@@ -10,7 +10,7 @@ export const Layout = (props) => {
       R.splitEvery(5), // means 5 boxes in a row
       R.addIndex(R.map)((row, index) => {
         return (
-          <Container>
+          <>
             <Grid item justifyContent="center" className="box-row" key={index}>
               {R.map((box) => {
                 return (
@@ -22,14 +22,14 @@ export const Layout = (props) => {
                 );
               }, row)}
             </Grid>
-          </Container>
+          </>
         );
       })
     )(R.range(1, 26));
   };
   return (
-    <Grid container justifyContent="center">
+    <>
       <div className="board">{renderBoxes(props)}</div>
-    </Grid>
+    </>
   );
 };

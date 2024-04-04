@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDice from "react-dice-complete";
 import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
 
 interface DiceProps {
   rollDice: (num: number) => void;
@@ -28,13 +29,13 @@ class Dice extends React.Component<DiceProps> {
 
   render() {
     return (
-      <>
+      <Grid>
         <ReactDice numDice={1} rollDone={this.rollDoneCallback} ref={this.reactDiceRef} faceColor="hsl(185, 50%, 50%)" dotColor="white" />
 
         <Button variant="contained" onClick={this.rollAll} style={{ backgroundColor: "hsl(185, 50%, 50%)" }}>
           Roll Dice
         </Button>
-      </>
+      </Grid>
     );
   }
 }

@@ -33,7 +33,7 @@ export const SetPlayers: React.FC<SetPlayersProps> = (props) => {
   return (
     <Grid container direction="column" spacing={2} alignContent={"center"}>
       <Grid item xs={12} md={12}>
-        <h1>Pretty Chinese</h1>
+        <h1>Board Game</h1>
         <p>Start game by entering the names of Player 1 and Player 2</p>
       </Grid>
       <Grid container item spacing={2}>
